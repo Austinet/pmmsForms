@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOG IN</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light py-4">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <img src="img/helium logo.png" alt="Helium logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <span class="navbar-text">
+                     Don't have an account?
+                  </span>
+                  <li class="nav-item ms-lg-4">
+                    <a class="btn btn-outline-primary px-4 rounded-pill" href="#">Sign Up</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>
+        <section id="sign-up-form-container class">
+            <div class="sign-up-form container col-6 m-auto my-5 border border-dark border-1 rounded">
+                 <div class="text-center">
+                    <h2>Welcome to Helium!</h2>
+                    <p class="text-secondary">Press sign in to your account</p>
+                 </div>
+                 <form action="" id="signUpForm" class="">
+                      <div class="mb-4 text-secondary fs-5">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="admin">
+                      </div>
+                      <div class="mb-4">
+                        <label for="password" class="form-label text-secondary fs-5">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control form-control-lg border-end-0" id="password" name="password" placeholder="********">
+                            <span class="input-group-text bg-white" id="view-password">eye</span>
+                        </div>
+                    </div>
+                   <div class="mb-5 d-flex justify-content-between align-items-center">
+                     <div class="form-check align-items-center d-flex">
+                        <input class="form-check-input" type="checkbox" id="keep-logged-in">
+                        <label class="form-check-label fs-5 ms-2" for="keep-logged-in">
+                          Keep me logged in
+                        </label>
+                     </div> 
+                     <div class="">
+                         <a href="" class="text-decoration-none fs-5">Forgot password</a>
+                     </div>
+                   </div>   
+                    <button type="submit" class="btn btn-danger w-100 btn-lg">Sign in</button>            
+                 </form>
+            </div>
+        </section>
+    </main>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
