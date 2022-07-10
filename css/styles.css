@@ -4,26 +4,37 @@
     padding: 0;
 }
 
-
 .rounded {
     border-radius: 39px !important;
-    padding: 6rem 7rem !important;
+}
+
+.rounded-pill {
+    border-radius: 12px !important;
+}
+
+.text-primary {
+    color: #298AFF !important;
 }
 
 .btn-danger {
     background-color: #ED1C24 !important;
 }
 
-@media(max-width:778px) {
-    .rounded {
-        padding: 2rem !important;
-    }
+.border-danger {
+    border: 3px solid #ED1C24 !important;
+    height: 100px;
+    width: 100px;
+    padding: 0.2rem;
 }
-@media(max-width: 400px) {
-    .rounded {
-        padding: 2rem 1rem !important;
-    }
+
+@media(max-width: 450px) {
     .fs-5 {
         font-size: 1rem !important;
+    }
+}
+
+@media(max-width: 375px) {
+    .fs-5 {
+        font-size: 0.9rem !important;
     }
 }
