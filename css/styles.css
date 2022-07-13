@@ -40,9 +40,16 @@
     font-style: italic;
 }
 
-@media(max-width: 450px) {
+
+@media(max-width: 460px) {
     .fs-5 {
         font-size: 1rem !important;
+    }
+    .reverse {
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        text-align: right;
+        padding-top: 1.5rem;
     }
 }
 
