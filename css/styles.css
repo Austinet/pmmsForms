@@ -16,6 +16,10 @@
     color: #298AFF !important;
 }
 
+.text-danger {
+    color: #ED1C24 !important;
+}
+
 .btn-danger {
     background-color: #ED1C24 !important;
 }
@@ -25,6 +29,15 @@
     height: 100px;
     width: 100px;
     padding: 0.2rem;
+}
+
+.error-area {
+    visibility: hidden;
+}
+
+.error-area {
+    font-size: 1.05rem !important;
+    font-style: italic;
 }
 
 @media(max-width: 450px) {

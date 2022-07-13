@@ -16,6 +16,9 @@ let usersDB = []
 //Regular expression
 let emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
+//Error codes
+
+
 //Sign Up form section
 const signUpForm = document.getElementById('signUpForm')
 if(window.location.href.includes(`signUp.html`)) {
@@ -24,11 +27,21 @@ if(window.location.href.includes(`signUp.html`)) {
 
 function validate(e) {
     e.preventDefault();
-    alert("submitted")
+ 
     let userName = signUpForm.username.value;
     let userEmail = signUpForm.email.value;
     let userPassword = signUpForm.password.value
     let confirmPassword = signUpForm.confirmPassword.value
+
+    //Error codes
+    let usernameError = document.querySelector('.username-error')
+    let confirmPasswordError = document.querySelector('.confirmPassword-error')
+    let emailError = document.querySelector('.email-error')
+    let conFirmPasswordError = () => {
+        confirmPasswordError.innerText = "Passwords don't match"
+        confirmPasswordError.style.visibility = 'visible'
+        signUpForm.confirmPassword.style.border = "1px solid #ED1C24"  
+    }
 
     usersDB = localStorage.getItem('dataBase');
     usersDB = JSON.parse(usersDB);
@@ -37,8 +50,8 @@ function validate(e) {
         usersDB = []
 
         if(userPassword !== confirmPassword) {
-            alert("Passwords don't match")
-        } else {
+            conFirmPasswordError()
+       } else {
             let newUser = {
                 username: userName,
                 email: userEmail,
@@ -50,13 +63,18 @@ function validate(e) {
         usersDB.forEach((user)=> {
             //if(!(emailRegExp.test(userEmail)) {
     //         alert("Email input not valid")
-    //     } else
+        //  emailError.innerText = "Email already exists"
+    //      } else
             if(user.username === userName) {
-                alert("Username already exists")
+                usernameError.style.visibility = 'visible'
+                signUpForm.username.style.border = "1px solid #ED1C24"  
             } else if(user.email === userEmail) {
-                alert("Email already exists")
+                // alert("Email already exists")
+                emailError.innerText = "Email already exists"
+                emailError.style.visibility = 'visible'
+                signUpForm.email.style.border = "1px solid #ED1C24"  
             } else if(userPassword !== confirmPassword) {
-                alert("Passwords don't match")
+                conFirmPasswordError()
             } else {
                 let newUser = {
                                 username: userName,
@@ -72,6 +90,7 @@ function validate(e) {
 
 //Save user's details to the database
 function saveUser(user) {
+    alert("submitted")
     usersDB.push(user)
     localStorage.setItem('dataBase', JSON.stringify(usersDB))    
     window.location.href = `index.html`
@@ -87,11 +106,19 @@ function login(e) {
     e.preventDefault();
     let loginName = signInForm.username.value;
     let loginPassword = signInForm.password.value;
+    let usernameError = document.querySelector('.username-error')
+    let passwordError = document.querySelector('.password-error')
+
+    let userNameError = () => {
+        signInForm.username.style.border = "1px solid #ED1C24"
+        usernameError.innerText = `User not found, please sign up`
+        usernameError.style.visibility = 'visible'
+    }
     
     usersDB = localStorage.getItem('dataBase');
     usersDB = JSON.parse(usersDB);
     if(usersDB === null) {
-        alert("Please sign up")
+        userNameError()
     } else { 
        let currentUser = usersDB.filter(users => users.username === loginName)
        if(currentUser.length !== 0) {
@@ -99,10 +126,12 @@ function login(e) {
             alert(`Welcome ${currentUser[0].username}`)
             window.location.href=`dashboard.html`
           } else {
-            alert("Incorrect password")
+            passwordError.innerText = `Incorrect password`
+            passwordError.style.visibility = 'visible'
+            signInForm.password.style.border = "1px solid #ED1C24"
           }
        } else {
-           alert("User not found, please sign up")
+          userNameError()
        }
    }
 }
@@ -117,6 +146,7 @@ if(window.location.href.includes(`forgotPassword.html`)) {
 function forgotPassword(e) {
     e.preventDefault()
     let userEmailAddress = forgotPasswordForm.email.value;
+    let emailError = document.querySelector('.email-error')
 
     usersDB = localStorage.getItem('dataBase');
     usersDB = JSON.parse(usersDB);
@@ -126,7 +156,8 @@ function forgotPassword(e) {
         localStorage.setItem("forgotPasswordUser", JSON.stringify(forgotPasswordUser))
         window.location.href = `resetPassword.html`
     } else {
-        alert("Email address not found")
+        emailError.style.visibility = 'visible'
+        forgotPasswordForm.email.style.border =  "1px solid #ED1C24"
     }
 }
 
@@ -142,9 +173,17 @@ function resetPassword(e) {
    let confirmNewPassword = resetPasswordForm.confirmNewPassword.value;
    let forgotPasswordUser = JSON.parse(localStorage.getItem('forgotPasswordUser'))
    usersDB = JSON.parse(localStorage.getItem('dataBase'))
+
+   //Error codes
+   let confirmPasswordError = document.querySelector('.confirmPassword-error')
+   let conFirmPasswordError = () => {
+       confirmPasswordError.innerText = "Passwords don't match"
+       confirmPasswordError.style.visibility = 'visible'
+       resetPasswordForm.confirmPassword.style.border = "1px solid #ED1C24"  
+   }
    
    if(newPassword !== confirmNewPassword) {
-     alert("Passwords doesn't match")
+     conFirmPasswordError()
    } else {
      usersDB.forEach((users)=> {
         if(users.email === forgotPasswordUser[0].email) {
@@ -174,11 +213,11 @@ function recoverPassword (e) {
     let recoveredPassword = recoverPasswordForm.recoveredPassword.value;
     let forgotPasswordUser = JSON.parse(localStorage.getItem('forgotPasswordUser'))
     let currentUserLog = document.querySelector('.currentUser')
+    let passwordError = document.querySelector('.password-error')
 
     if(forgotPasswordUser[0].password === recoveredPassword) {
        window.location.href=`dashboard.html`
-    } else (
-        alert("Wrong password input")
-    )
+    } else {
+        passwordError.style.visibility = 'visible'
+    }
 } 
-
