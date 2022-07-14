@@ -47,14 +47,20 @@
     }
     .reverse {
         flex-direction: column-reverse;
-        justify-content: flex-end;
         text-align: right;
-        padding-top: 1.5rem;
+        padding-top: 0.8rem;
+    }
+
+    .navbar>.container {
+        align-items: flex-start !important;
     }
 }
 
-@media(max-width: 375px) {
+@media(max-width: 370px) {
     .fs-5 {
-        font-size: 0.9rem !important;
+        font-size: 0.85rem !important;
+    }
+    .navbar-text {
+        font-size: 0.8rem;
     }
 }
