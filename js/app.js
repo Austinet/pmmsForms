@@ -90,7 +90,6 @@ function validate(e) {
 
 //Save user's details to the database
 function saveUser(user) {
-    alert("submitted")
     usersDB.push(user)
     localStorage.setItem('dataBase', JSON.stringify(usersDB))    
     window.location.href = `index.html`
