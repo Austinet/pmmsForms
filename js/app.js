@@ -98,11 +98,7 @@ function saveUser(user) {
 
 //Login form section
 const signInForm = document.getElementById('signInForm')
-<<<<<<< HEAD
 if(document.title === 'Login' ) {
-=======
-if(window.location.href.includes(`index.html`) || document.title = "Login") {
->>>>>>> ba7c9995dc6b2847d21c403eacc80f973b287d6d
     signInForm.addEventListener('submit', login)
 }
 
